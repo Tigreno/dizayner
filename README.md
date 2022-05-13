@@ -1,0 +1,2 @@
+# dizayner
+first step django
