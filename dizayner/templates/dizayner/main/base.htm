@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href= "{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+<div class="head"> 
+    <div class="logo">
+        <img src="{% static 'logo.png' %}" alt="">
+    </div>
+    <div class="menu">
+
+    </div>
+    <div class="user-profile">
+        {% if request.user.is_authenticated %}
+            <p>Пользователь {{ user.get_username }}</p>           
+            <a href="/accounts/logout/">Выход</a>
+        {% else %}
+            <a href="/accounts/login/">Войти</a>
+        {% endif %}
+        
+    </div>
+    </div>
+<div class="content">
+    <div class="content left-table">
+        <a href="{% url 'dizayner:dizayner_spisok' %}">Дизайнеры</a>
+        <a href="{% url 'dizayner:proizvoditeli_spisok' %}">Производители</a>
+    </div>
+    <div class="content midle-table">
+        
+        {% block content %}
+	    {% endblock %}  
+
+    </div>
+
+    <div class="content right-table"><p>Poka</p></div>
+</div>
+<div class="footer"><p>Footer</p></div>
+
+
+</body>
+
+</html>

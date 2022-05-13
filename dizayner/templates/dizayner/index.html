@@ -1,0 +1,21 @@
+
+{% extends "dizayner/main/base.htm" %}
+
+    {%block content %}
+        <h1> {{ dizayner.name }} </h1>
+
+        {% for portfolio in dizayner.portfolio_set.all %}
+            <div class="name-portfolio">
+                <a href="{% url 'dizayner:portfolio_detail' dizayner.id portfolio.id %}">{{ portfolio.name }}</a>
+
+            </div>
+            {% for portfolio_foto in portfolio.portfolio_photo_set.all %}
+                <img src= {{ portfolio_foto.image.url }} width="30%">
+            {% endfor %}
+        {% endfor %}
+
+        <a href="{% url 'dizayner:portfolio_create' dizayner.id %}">Добавить портфолио</a>
+
+        <p>Romashka</p>
+    
+    {% endblock %}

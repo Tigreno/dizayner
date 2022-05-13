@@ -1,0 +1,13 @@
+<!-- Устанавливаем multipart/form-data -->
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- Выводим каждое поле формы в отдельном параграфе -->
+    {{ form }}
+    <br>
+
+    {% for formset in inlines %}
+        {{ formset }}
+    {% endfor %}
+    <button type="submit">Загрузка</button>
+</form>
+
